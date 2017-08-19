@@ -1,0 +1,1 @@
+Starter project using [p5js](https://p5js.org/) and [typescript](https://www.typescriptlang.org/)
