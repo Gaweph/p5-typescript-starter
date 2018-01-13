@@ -1,0 +1,14 @@
+{
+  "name": "p5-typescript-starter",
+  "version": "1.0.0",
+  "description": "Project to quickly get something working in [p5.js](https://p5js.org/) and [typescript](https://www.typescriptlang.org/)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server && tsc --watch"
+  },
+  "homepage": "https://github.com/Gaweph/p5-typescript-starter#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "typescript": "^2.6.2"
+  }
+}
