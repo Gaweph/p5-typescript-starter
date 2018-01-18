@@ -2,6 +2,10 @@
 
 var sketch = (p:p5) => {
 
+    p.preload = () => {
+
+    }
+    
     p.setup = () => {
         p.createCanvas(p.windowWidth, p.windowHeight);
     }

@@ -1,4 +1,6 @@
 var sketch = (p) => {
+    p.preload = () => {
+    };
     p.setup = () => {
         p.createCanvas(p.windowWidth, p.windowHeight);
     };
