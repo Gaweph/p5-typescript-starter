@@ -21,4 +21,4 @@ The project can then be viewed at http://localhost:8080
 
 ### Features
 
-This project uses **live-server** which means that any changes to your files will be instantly updated in the browser.
+This project uses JohnPapas https://github.com/johnpapa/lite-server which means that any changes to your files will be instantly updated in the browser.

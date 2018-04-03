@@ -4,11 +4,12 @@
   "description": "Project to quickly get something working in [p5.js](https://p5js.org/) and [typescript](https://www.typescriptlang.org/)",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server --verbose | tsc --watch"
+    "start": "concurrently \"lite-server\" \" tsc --watch\""
   },
   "homepage": "https://github.com/Gaweph/p5-typescript-starter#readme",
   "devDependencies": {
-    "live-server": "^1.2.0",
-    "typescript": "^2.6.2"
+    "concurrently": "^3.5.1",
+    "lite-server": "^2.3.0",
+    "typescript": "^2.8.1"
   }
 }
