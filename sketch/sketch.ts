@@ -1,11 +1,14 @@
 var sketch = (p:p5) => {
 
+    this.morph = new Morph();
+
     p.preload = () => {
 
     }
     
     p.setup = () => {
         p.createCanvas(p.windowWidth, p.windowHeight);
+        this.morph.setup(p);
     }
     
     p.windowResized = () => {
@@ -19,12 +22,7 @@ var sketch = (p:p5) => {
 
     p.draw = () => {
         p.background(100);
-        p.stroke(p.color(0));
-        p.strokeWeight(2);
-        p.fill(p.color(255));
-        // Draw Cube
-        p.rect(positionX,positionY,cubeSize,cubeSize);
-        
+        this.morph.draw(p);        
     }
 }
 
