@@ -17,7 +17,7 @@ npm install
 npm start
 ```
 
-The project can then be viewed at http://localhost:8080
+The project can then be viewed at http://localhost:3000
 
 ### Features
 
