@@ -17,7 +17,6 @@ var sketch = (p:p5) => {
     let positionY = 10;
     let cubeSize = 50;
 
-    // const ccc = p.color(10);
     p.draw = () => {
         p.background(100);
         p.stroke(p.color(0));
