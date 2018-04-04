@@ -21,4 +21,4 @@ var sketch = (p: p5) => {
     }
 }
 
-var p = new p5(sketch);
+var sketchP = new p5(sketch);
