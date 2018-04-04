@@ -17,7 +17,7 @@ class Morph {
     this.shapes.push({points: Shapes.circle(p, 100), color: p.color('#009CDF')});
     this.shapes.push({points: Shapes.circle(p, 150), color: p.color(255, 204, 0)});
     this.shapes.push({points: Shapes.square(p, 50), color: p.color(175, 100, 220)});
-    this.shapes.push({points: Shapes.star(p, 0, 0, 30, 70, 5), color: p.color('#E23838')});
+    // this.shapes.push({points: Shapes.star(p, 0, 0, 30, 70, 5), color: p.color('#E23838')});
     
     // setup morph array
     this.morph = new Array<p5.Vector>();
@@ -75,7 +75,7 @@ class Morph {
         p.vertex(v.x, v.y);
     }
     
-    p.endShape((<any>p5).CLOSE);    
+    p.endShape(p.CLOSE);  
     
   }
   
