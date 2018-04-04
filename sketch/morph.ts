@@ -2,25 +2,25 @@
 class Morph {
     
   // Arrays to store the vertices for the shapes
-  shapes = new Array<{points: p5.Vector[], color: p5.Color}>();
-  currentShape = 0;
+  shapes: {points: p5.Vector[], color: p5.Color}[];
+  currentShape: number;
   // An array for the set of vertices beign drawn into the window
-  morph = new Array<p5.Vector>();
+  morph: p5.Vector[];
 
   // This boolean variable will control if we are morphing to a circle or square
 
   setup(p: p5) {
+
+    // Setup shapes array
+    this.shapes = [];
+    this.currentShape = 0;
     this.shapes.push({points: Shapes.circle(p, 100), color: p.color('#009CDF')});
     this.shapes.push({points: Shapes.circle(p, 150), color: p.color(255, 204, 0)});
     this.shapes.push({points: Shapes.square(p, 50), color: p.color(175, 100, 220)});
     this.shapes.push({points: Shapes.star(p, 0, 0, 30, 70, 5), color: p.color('#E23838')});
     
-    this.setupMorphArray();
-  }
-
-  setupMorphArray() {
+    // setup morph array
     this.morph = new Array<p5.Vector>();
-
     let highestCount = 0;
     for(var i =0; i < this.shapes.length; i++) {
       highestCount = Math.max(highestCount, this.shapes[i].points.length);
