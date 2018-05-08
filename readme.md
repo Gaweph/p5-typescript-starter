@@ -15,9 +15,8 @@ npm install
 
 ```
 npm start
+http://localhost:3000
 ```
-
-The project can then be viewed at http://localhost:3000
 
 ### Features
 
