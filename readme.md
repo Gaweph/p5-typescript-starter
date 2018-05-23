@@ -17,7 +17,3 @@ npm install
 npm start
 http://localhost:3000
 ```
-
-### Features
-
-This project uses JohnPapas https://github.com/johnpapa/lite-server which means that any changes to your files will be instantly updated in the browser.
