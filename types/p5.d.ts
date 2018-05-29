@@ -1,5 +1,22 @@
 // This file was auto-generated. Please do not edit it.
 
+type COLOR_MODE = any;
+type ARC_MODE = any;
+type ELLIPSE_MODE = any;
+type RECT_MODE = any;
+type STROKE_CAP = any;
+type STROKE_JOIN = any;
+type RENDERER = any;
+type BLEND_MODE = any;
+type BEGIN_KIND = any;
+type END_MODE = any;
+type IMAGE_MODE = any;
+type FILTER_TYPE = any;
+type ANGLE_MODE = any;
+type HORIZ_ALIGN = any;
+type VERT_ALIGN = any;
+type THE_STYLE = any;
+type GRAPHICS_RENDERER = any;
 declare class p5 {
   // Properties from p5
   
@@ -10342,7 +10359,7 @@ declare namespace p5 {
      *   @param [timeFromNow] schedule this event to happen 
      *   seconds from now
      */
-    amp(volume: number|object, rampTime?: number, timeFromNow?: number): void
+    amp(vol: number|object, rampTime?: number, timeFromNow?: number): AudioParam
     
     /**
      *   Send output to a p5.sound or web audio object

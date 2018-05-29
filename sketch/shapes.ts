@@ -38,7 +38,7 @@ class Shapes {
   }
 
   // star(0, 0, 30, 70, 5); 
-  static star(p:p5, x, y, radius1, radius2, npoints): p5.Vector[] {
+  static star(p:p5, x: number, y: number, radius1: number, radius2: number, npoints: number): p5.Vector[] {
     var angle = p.TWO_PI / npoints;
     var halfAngle = angle/2.0;
     
