@@ -1,12 +1,4 @@
 {
-    // "compilerOptions": {
-    //     // "module": "commonjs",
-    //     "target": "es6",
-    //     "noImplicitAny": false,
-    //     "sourceMap": true,
-    //     out
-    // }
-
     "compilerOptions": {
         "target": "ES5",
         "removeComments": true,
@@ -16,5 +8,5 @@
         "rootDir": "./sketch/",
         "sourceMap": true,
         "noImplicitAny": true
-      }
+    }
 }
