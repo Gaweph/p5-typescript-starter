@@ -8,5 +8,10 @@
         "rootDir": "./sketch/",
         "sourceMap": true,
         "noImplicitAny": true
-    }
+    },
+    "references": [
+        {
+            "path": "node_modules/@types/p5/"
+        }
+    ]
 }
