@@ -1,4 +1,6 @@
 //https://processing.org/examples/morph.html
+// @ts-ignore
+import p5 = require('p5');
 class Morph {
 
   // Arrays to store the vertices for the shapes

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "es5",
         "removeComments": true,
         "preserveConstEnums": true,
         "outFile": "./build/build.js",
@@ -8,10 +8,5 @@
         "rootDir": "./sketch/",
         "sourceMap": true,
         "noImplicitAny": true
-    },
-    "references": [
-        {
-            "path": "node_modules/@types/p5/"
-        }
-    ]
+    }
 }
