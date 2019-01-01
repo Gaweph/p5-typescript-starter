@@ -8,8 +8,9 @@
   },
   "homepage": "https://github.com/Gaweph/p5-typescript-starter#readme",
   "devDependencies": {
-    "browser-sync": "^2.24.4",
-    "concurrently": "^3.5.1",
-    "typescript": "^2.8.3"
+    "@types/p5": "^0.7.1",
+    "browser-sync": "^2.26.3",
+    "concurrently": "^3.6.1",
+    "typescript": "^2.9.2"
   }
 }
