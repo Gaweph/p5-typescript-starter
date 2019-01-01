@@ -1,5 +1,3 @@
-// @ts-ignore
-import p5 = require('p5');
 var sketch = (p: p5) => {
 
     const morph = new Morph();

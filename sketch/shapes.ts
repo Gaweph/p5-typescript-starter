@@ -1,6 +1,5 @@
-// @ts-ignore
-import p5 = require('p5');
 class Shapes {
+
   static circle(p: p5, size: number): p5.Vector[] {
 
     // Create a circle using vectors pointing from center

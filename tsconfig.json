@@ -7,6 +7,7 @@
         "sourceRoot": "./sketch/",
         "rootDir": "./sketch/",
         "sourceMap": true,
-        "noImplicitAny": true
+        "noImplicitAny": true,
+        "module": "none"
     }
 }
