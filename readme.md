@@ -8,6 +8,8 @@ Project to quickly get something working in [p5.js](https://p5js.org/) and [type
 
 ```
 git clone https://github.com/Gaweph/p5-typescript-starter.git
+```
+```
 npm install
 ```
 
@@ -15,5 +17,13 @@ npm install
 
 ```
 npm start
-http://localhost:3000
 ```
+A local version will now be running on http://localhost:3000
+
+### Demo
+
+A demo of the default sketch can be found here:
+
+[github.com/Gaweph/p5-typescript-starter](github.com/Gaweph/p5-typescript-starter)
+
+this is based on the [morph](https://processing.org/examples/morph.html) sketch available in the p5js examples
