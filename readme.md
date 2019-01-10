@@ -18,12 +18,12 @@ npm install
 ```
 npm start
 ```
-A local version will now be running on http://localhost:3000
+A local version will now be running on [localhost:3000](localhost:3000)
 
-### Demo
+## Demo
 
 A demo of the default sketch can be found here:
 
-[github.com/Gaweph/p5-typescript-starter](github.com/Gaweph/p5-typescript-starter)
+[https://gaweph.github.io/p5-typescript-starter/](https://gaweph.github.io/p5-typescript-starter/)
 
 this is based on the [morph](https://processing.org/examples/morph.html) sketch available in the p5js examples
