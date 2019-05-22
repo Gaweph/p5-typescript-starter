@@ -60,6 +60,8 @@ function draw() {
 ### Instanced Mode
 ``` typescript
 var sketch = (p: p5) => {
+    this.x = 100;
+    this.y = 100;
     p.setup = () => {
         p.createCanvas(p.windowWidth, p.windowHeight);
     }
@@ -67,7 +69,7 @@ var sketch = (p: p5) => {
     p.draw = () => {
         p.background(0);
         p.fill(255);
-        p.rect(x,y,50,50);
+        p.rect(this.x,this.y,50,50);
     }
 }
 
