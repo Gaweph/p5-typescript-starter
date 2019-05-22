@@ -9,15 +9,15 @@ class Morph {
 
   // This boolean variable will control if we are morphing to a circle or square
 
-  setup(p: p5) {
+  setup() {
 
     // Setup shapes array
     this.shapes = [];
     this.currentShape = 0;
-    this.shapes.push({ points: Shapes.circle(p, 100), color: p.color('#009CDF') });
-    this.shapes.push({ points: Shapes.circle(p, 150), color: p.color(255, 204, 0) });
-    this.shapes.push({ points: Shapes.square(p, 50), color: p.color(175, 100, 220) });
-    // this.shapes.push({points: Shapes.star(p, 0, 0, 30, 70, 5), color: p.color('#E23838')});
+    this.shapes.push({ points: Shapes.circle(100), color: color('#009CDF') });
+    this.shapes.push({ points: Shapes.circle(150), color: color(255, 204, 0) });
+    this.shapes.push({ points: Shapes.square(50), color: color(175, 100, 220) });
+    // this.shapes.push({points: Shapes.star(p, 0, 0, 30, 70, 5), color: color('#E23838')});
 
     // setup morph array
     this.morph = new Array<p5.Vector>();
@@ -30,7 +30,7 @@ class Morph {
     }
   }
 
-  recalc(p: p5) {
+  recalc() {
     // We will keep how far the vertices are from their target
     var totalDistance = 0;
 
@@ -56,26 +56,26 @@ class Morph {
     }
   }
 
-  draw(p: p5) {
-    this.recalc(p);
+  draw() {
+    this.recalc();
 
     const color = this.shapes[this.currentShape].color;
     const points = this.shapes[this.currentShape].points;
 
     // Draw relative to center
-    p.translate(p.width / 2, p.height / 2);
-    p.strokeWeight(4);
+    translate(width / 2, height / 2);
+    strokeWeight(4);
     // Draw a polygon that makes up all the vertices
-    p.beginShape();
-    p.noFill();
+    beginShape();
+    noFill();
 
-    p.stroke(color);
+    stroke(color);
     for (var i = 0; i < points.length; i++) {
       var v = this.morph[i];
-      p.vertex(v.x, v.y);
+      vertex(v.x, v.y);
     }
 
-    p.endShape(p.CLOSE);
+    endShape(CLOSE);
 
   }
 
