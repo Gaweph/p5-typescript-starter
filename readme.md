@@ -47,13 +47,13 @@ let x = 100;
 let y = 100;
 
 function setup() {
-  createCanvas(200,200);
+  createCanvas(windowWidth,windowHeight);
 }
 
 function draw() {
   background(0);
   fill(255);
-  ellipse(x,y,50,50);
+  rect(x,y,50,50);
 }
 ```
 
