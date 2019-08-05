@@ -26,6 +26,8 @@ A demo of the default sketch can be found here:
 
 [p5-typescript-starter](https://gaweph.github.io/p5-typescript-starter/)
 
+![Demo](p5-typescript-demo.gif?raw=true "Demo")
+
 this is based on the [morph](https://processing.org/examples/morph.html) sketch available in the p5js examples
 
 ## Global and Instanced mode
