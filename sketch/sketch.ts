@@ -1,11 +1,7 @@
 // GLOBAL VARS & TYPES
 let numberOfShapes = 15;
-interface ShapeType {
-  color: p5.Color;
-  angle: number;
-  points: p5.Vector[];
-}
-let shapeCollection: ShapeType[];
+let speed = 5;
+let shapeCollection: Shape[];
 
 // P5 WILL AUTOMATICALLY USE GLOBAL MODE IF A DRAW() FUNCTION IS DEFINED
 function setup() {
@@ -24,7 +20,7 @@ function setup() {
   frameRate(30);
 }
 
-// P5 WILL HANDLE REQUESTING ANIMATION FRAMES FROM THE BROWSER AND WIL RUN DRAW() EACH ANIMATION FROME
+// p5 WILL HANDLE REQUESTING ANIMATION FRAMES FROM THE BROWSER AND WIL RUN DRAW() EACH ANIMATION FROME
 function draw() {
   // CLEAR BACKGROUND
   background(0);
@@ -36,13 +32,13 @@ function draw() {
     const shape = shapeCollection[i];
 
     // UPDATE SHAPE ROTATION
-    shape.angle += (numberOfShapes - i) * 0.003;
+    shape.angle += (numberOfShapes - i) * (speed / 1000));
 
     // DRAW SHAPE
-    drawShape(shape);
+    ShapesHelper.draw(shape);
   }
 
-  // P5 WILL AUTO RUN THIS FUNCTION IF THE BROWSER WINDOW SIZE CHANGES
+  // p5 WILL AUTO RUN THIS FUNCTION IF THE BROWSER WINDOW SIZE CHANGES
   function windowResized() {
     createCanvas(windowWidth, windowHeight);
   }
@@ -50,54 +46,13 @@ function draw() {
 
 // INITIALIZE THE SHAPES ARRAY
 function initShapes() {
-  shapeCollection = <ShapeType[]>[];
+  shapeCollection = [];
   const colorsArr = ColorHelper.getColorsArray(numberOfShapes);
   for (let i = 0; i < numberOfShapes; i++) {
     const radius = 20 * i;
-    shapeCollection.push(createShape(colorsArr[i], radius));
+    // shapeCollection.push(ShapesHelper.StarShape(radius, colorsArr[i]));
+    shapeCollection.push(
+      ShapesHelper.PolygonShape(radius, colorsArr[i], 3 + i)
+    );
   }
-}
-
-// CREATE A SHAPE WITH THE RELEVANT COLOUR AND RADIUS
-function createShape(color: p5.Color, radius: number) {
-  const peakHeight = radius * 0.5;
-  const centerX = 0;
-  const centerY = 0;
-  const numberOfPeaks = 5;
-  const points = Shapes.star(
-    centerX,
-    centerY,
-    radius,
-    peakHeight,
-    numberOfPeaks
-  );
-
-  return {
-    color: color,
-    angle: 0,
-    points: points,
-  };
-}
-
-// DRAW A GIVEN SHAPE TO THE CANVAS
-// (NOTE: EACH SHAPE PUSHES AND POPS ITS OWN TRANSLATE TO DEAL WITH THE ANGLE)
-function drawShape(shape: ShapeType) {
-  // TRANSLATE
-  push();
-  rotate(shape.angle);
-
-  // DRAW
-  noFill();
-  strokeWeight(2);
-  stroke(shape.color);
-  beginShape();
-  for (var x = 0; x < shape.points.length; x++) {
-    var v = shape.points[x];
-    vertex(v.x, v.y);
-  }
-  endShape(CLOSE);
-  // END:DRAW
-
-  pop();
-  // END: TRANSLATE
 }
