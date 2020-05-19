@@ -62,30 +62,59 @@ var Shapes = (function () {
     };
     return Shapes;
 }());
-var angle = 0;
-var squares = 10;
-var colors;
+var numberOfShapes = 15;
+var shapeCollection;
 function setup() {
+    console.log("🚀 - Setup initialized - P5 is running");
     createCanvas(windowWidth, windowHeight);
     rectMode(CENTER);
-    colors = ColorHelper.getColorsArray(squares);
+    initShapes();
+    frameRate(30);
 }
 function draw() {
-    background(51);
-    translate((width / 2), (height / 2));
-    angle = angle + 0.01;
-    rotate(angle);
-    for (var i = 0; i < squares; i++) {
-        strokeWeight(2);
-        stroke(colors[i]);
-        noFill();
-        beginShape();
-        var points = Shapes.star(0, 0, 10 * i, 20 * i, 5);
-        for (var x = 0; x < points.length; x++) {
-            var v = points[x];
-            vertex(v.x, v.y);
-        }
-        endShape(CLOSE);
+    background(0);
+    translate(width / 2, height / 2);
+    for (var i = 0; i < numberOfShapes; i++) {
+        var shape = shapeCollection[i];
+        shape.angle += (numberOfShapes - i) * 0.003;
+        drawShape(shape);
     }
+    function windowResized() {
+        createCanvas(windowWidth, windowHeight);
+    }
+}
+function initShapes() {
+    shapeCollection = [];
+    var colorsArr = ColorHelper.getColorsArray(numberOfShapes);
+    for (var i = 0; i < numberOfShapes; i++) {
+        var radius = 20 * i;
+        shapeCollection.push(createShape(colorsArr[i], radius));
+    }
+}
+function createShape(color, radius) {
+    var peakHeight = radius * 0.5;
+    var centerX = 0;
+    var centerY = 0;
+    var numberOfPeaks = 5;
+    var points = Shapes.star(centerX, centerY, radius, peakHeight, numberOfPeaks);
+    return {
+        color: color,
+        angle: 0,
+        points: points,
+    };
+}
+function drawShape(shape) {
+    push();
+    rotate(shape.angle);
+    noFill();
+    strokeWeight(2);
+    stroke(shape.color);
+    beginShape();
+    for (var x = 0; x < shape.points.length; x++) {
+        var v = shape.points[x];
+        vertex(v.x, v.y);
+    }
+    endShape(CLOSE);
+    pop();
 }
 //# sourceMappingURL=build.js.map
