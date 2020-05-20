@@ -35,7 +35,7 @@ function draw() {
     shape.angle += (numberOfShapes - i) * (speed / 1000);
 
     // DRAW SHAPE
-    strokeWeight(3);
+    strokeWeight(3 + i);
     ShapesHelper.draw(shape);
   }
 

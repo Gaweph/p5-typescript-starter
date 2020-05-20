@@ -118,7 +118,7 @@ function draw() {
     for (var i = 0; i < numberOfShapes; i++) {
         var shape = shapeCollection[i];
         shape.angle += (numberOfShapes - i) * (speed / 1000);
-        strokeWeight(3);
+        strokeWeight(3 + i);
         ShapesHelper.draw(shape);
     }
     function windowResized() {
