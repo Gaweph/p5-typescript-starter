@@ -32,9 +32,10 @@ function draw() {
     const shape = shapeCollection[i];
 
     // UPDATE SHAPE ROTATION
-    shape.angle += (numberOfShapes - i) * (speed / 1000));
+    shape.angle += (numberOfShapes - i) * (speed / 1000);
 
     // DRAW SHAPE
+    strokeWeight(3);
     ShapesHelper.draw(shape);
   }
 

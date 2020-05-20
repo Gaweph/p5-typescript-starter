@@ -14,7 +14,6 @@ class ShapesHelper {
 
     // DRAW
     noFill();
-    strokeWeight(2);
     stroke(shape.color);
     beginShape();
     for (var x = 0; x < shape.points.length; x++) {

@@ -50,7 +50,6 @@ var ShapesHelper = (function () {
         push();
         rotate(shape.angle);
         noFill();
-        strokeWeight(2);
         stroke(shape.color);
         beginShape();
         for (var x = 0; x < shape.points.length; x++) {
@@ -119,7 +118,7 @@ function draw() {
     for (var i = 0; i < numberOfShapes; i++) {
         var shape = shapeCollection[i];
         shape.angle += (numberOfShapes - i) * (speed / 1000);
-        ;
+        strokeWeight(3);
         ShapesHelper.draw(shape);
     }
     function windowResized() {
