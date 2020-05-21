@@ -1,6 +1,6 @@
 // GLOBAL VARS & TYPES
 let numberOfShapes = 15;
-let speed = 5;
+let speed: p5.Element;
 
 // P5 WILL AUTOMATICALLY USE GLOBAL MODE IF A DRAW() FUNCTION IS DEFINED
 function setup() {
@@ -11,6 +11,11 @@ function setup() {
 
   // SETUP SOME OPTIONS
   rectMode(CENTER).noFill().frameRate(30);
+
+  // SPEED SLIDER
+  speed = createSlider(0, 15, 3, 1);
+  speed.position(10, 10);
+  speed.style("width", "80px");
 }
 
 // p5 WILL HANDLE REQUESTING ANIMATION FRAMES FROM THE BROWSER AND WIL RUN DRAW() EACH ANIMATION FROME
@@ -21,12 +26,12 @@ function draw() {
   translate(width / 2, height / 2);
 
   const colorsArr = ColorHelper.getColorsArray(numberOfShapes);
-  const baseSpeed = frameCount / 500;
+  const baseSpeed = (frameCount / 500) * <number>speed.value();
   for (var i = 0; i < numberOfShapes; i++) {
     const npoints = 3 + i;
     const radius = 20 * i;
     const angle = TWO_PI / npoints;
-    const spin = baseSpeed * (numberOfShapes - i) * speed;
+    const spin = baseSpeed * (numberOfShapes - i);
 
     strokeWeight(3 + i).stroke(colorsArr[i]);
 

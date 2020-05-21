@@ -44,22 +44,25 @@ var ColorHelper = (function () {
     return ColorHelper;
 }());
 var numberOfShapes = 15;
-var speed = 5;
+var speed;
 function setup() {
     console.log("🚀 - Setup initialized - P5 is running");
     createCanvas(windowWidth, windowHeight);
     rectMode(CENTER).noFill().frameRate(30);
+    speed = createSlider(0, 15, 3, 1);
+    speed.position(10, 10);
+    speed.style("width", "80px");
 }
 function draw() {
     background(0);
     translate(width / 2, height / 2);
     var colorsArr = ColorHelper.getColorsArray(numberOfShapes);
-    var baseSpeed = frameCount / 500;
+    var baseSpeed = (frameCount / 500) * speed.value();
     for (var i = 0; i < numberOfShapes; i++) {
         var npoints = 3 + i;
         var radius = 20 * i;
         var angle = TWO_PI / npoints;
-        var spin = baseSpeed * (numberOfShapes - i) * speed;
+        var spin = baseSpeed * (numberOfShapes - i);
         strokeWeight(3 + i).stroke(colorsArr[i]);
         push();
         rotate(spin);
