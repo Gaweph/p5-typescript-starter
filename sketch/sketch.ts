@@ -1,23 +1,16 @@
 // GLOBAL VARS & TYPES
 let numberOfShapes = 15;
 let speed = 5;
-let shapeCollection: Shape[];
 
 // P5 WILL AUTOMATICALLY USE GLOBAL MODE IF A DRAW() FUNCTION IS DEFINED
 function setup() {
   console.log("🚀 - Setup initialized - P5 is running");
+
   // FULLSCREEN CANVAS
   createCanvas(windowWidth, windowHeight);
 
-  // SHAPES ARE DRAWN FROM THE CENTER
-  rectMode(CENTER);
-
-  // INITIALIZE THE SHAPECOLLECTION
-  initShapes();
-
-  // THIS WILL SET THE FRAMERATE TO 30.
-  // NOTE: THIS IS -NOT- REQUIRED
-  frameRate(30);
+  // SETUP SOME OPTIONS
+  rectMode(CENTER).noFill().frameRate(30);
 }
 
 // p5 WILL HANDLE REQUESTING ANIMATION FRAMES FROM THE BROWSER AND WIL RUN DRAW() EACH ANIMATION FROME
@@ -27,33 +20,32 @@ function draw() {
   // TRANSLATE TO CENTER OF SCREEN
   translate(width / 2, height / 2);
 
-  // DRAW EACH SHAPE
+  const colorsArr = ColorHelper.getColorsArray(numberOfShapes);
+  const baseSpeed = frameCount / 500;
   for (var i = 0; i < numberOfShapes; i++) {
-    const shape = shapeCollection[i];
+    const npoints = 3 + i;
+    const radius = 20 * i;
+    const angle = TWO_PI / npoints;
+    const spin = baseSpeed * (numberOfShapes - i) * speed;
 
-    // UPDATE SHAPE ROTATION
-    shape.angle += (numberOfShapes - i) * (speed / 1000);
+    strokeWeight(3 + i).stroke(colorsArr[i]);
 
-    // DRAW SHAPE
-    strokeWeight(3 + i);
-    ShapesHelper.draw(shape);
-  }
-
-  // p5 WILL AUTO RUN THIS FUNCTION IF THE BROWSER WINDOW SIZE CHANGES
-  function windowResized() {
-    createCanvas(windowWidth, windowHeight);
+    push();
+    rotate(spin);
+    // DRAW
+    beginShape();
+    for (let a = 0; a < TWO_PI; a += angle) {
+      let sx = cos(a) * radius;
+      let sy = sin(a) * radius;
+      vertex(sx, sy);
+    }
+    endShape(CLOSE);
+    // END:DRAW
+    pop();
   }
 }
 
-// INITIALIZE THE SHAPES ARRAY
-function initShapes() {
-  shapeCollection = [];
-  const colorsArr = ColorHelper.getColorsArray(numberOfShapes);
-  for (let i = 0; i < numberOfShapes; i++) {
-    const radius = 20 * i;
-    // shapeCollection.push(ShapesHelper.StarShape(radius, colorsArr[i]));
-    shapeCollection.push(
-      ShapesHelper.PolygonShape(radius, colorsArr[i], 3 + i)
-    );
-  }
+// p5 WILL AUTO RUN THIS FUNCTION IF THE BROWSER WINDOW SIZE CHANGES
+function windowResized() {
+  createCanvas(windowWidth, windowHeight);
 }
