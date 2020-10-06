@@ -1,14 +1,12 @@
 {
-  "name": "p5-typescript-starter",
+  "name": "p5-template",
   "version": "1.0.0",
-  "description": "Project to quickly get something working in [p5.js](https://p5js.org/) and [typescript](https://www.typescriptlang.org/)",
+  "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p start-compile start-run",
     "start-compile": "tsc --watch",
     "start-run": "browser-sync start --server -w"
   },
-  "homepage": "https://github.com/Gaweph/p5-typescript-starter#readme",
   "devDependencies": {
     "@types/p5": "^0.9.0",
     "browser-sync": "^2.26.12",
