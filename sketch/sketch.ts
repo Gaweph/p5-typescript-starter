@@ -52,5 +52,5 @@ function draw() {
 
 // p5 WILL AUTO RUN THIS FUNCTION IF THE BROWSER WINDOW SIZE CHANGES
 function windowResized() {
-  createCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, windowHeight);
 }

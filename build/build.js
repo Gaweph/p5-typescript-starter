@@ -77,6 +77,6 @@ function draw() {
     }
 }
 function windowResized() {
-    createCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowWidth, windowHeight);
 }
 //# sourceMappingURL=../sketch/sketch/build.js.map
