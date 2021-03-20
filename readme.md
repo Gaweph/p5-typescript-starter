@@ -43,7 +43,7 @@ As stated on the P5 wiki:
 
 > While this is convenient (and friendlier) it's important to note that this can lead to problems and confusion down the road when mixing other JS libraries or trying to embed multiple p5 sketches on the same page. A safer, more advanced methodology is to create a p5 sketch as an object "instance".
 
-The following examples are both functionaly the same.
+The following examples are both functionally the same.
 
 ### Global Mode
 
