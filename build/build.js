@@ -59,24 +59,28 @@ function draw() {
     var colorsArr = ColorHelper.getColorsArray(numberOfShapes);
     var baseSpeed = (frameCount / 500) * speed.value();
     for (var i = 0; i < numberOfShapes; i++) {
-        var npoints = 3 + i;
-        var radius = 20 * i;
-        var angle = TWO_PI / npoints;
-        var spin = baseSpeed * (numberOfShapes - i);
         strokeWeight(3 + i).stroke(colorsArr[i]);
         push();
+        var spin = baseSpeed * (numberOfShapes - i);
+        var numberOfSides = 3 + i;
+        var width_1 = 40 * i;
         rotate(spin);
-        beginShape();
-        for (var a = 0; a < TWO_PI; a += angle) {
-            var sx = cos(a) * radius;
-            var sy = sin(a) * radius;
-            vertex(sx, sy);
-        }
-        endShape(CLOSE);
+        drawPolygon(numberOfSides, width_1);
         pop();
     }
 }
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
+}
+function drawPolygon(numberOfSides, width) {
+    var angle = TWO_PI / numberOfSides;
+    var radius = width / 2;
+    beginShape();
+    for (var a = 0; a < TWO_PI; a += angle) {
+        var sx = cos(a) * radius;
+        var sy = sin(a) * radius;
+        vertex(sx, sy);
+    }
+    endShape(CLOSE);
 }
 //# sourceMappingURL=../sketch/sketch/build.js.map

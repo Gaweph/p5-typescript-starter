@@ -28,24 +28,15 @@ function draw() {
   const colorsArr = ColorHelper.getColorsArray(numberOfShapes);
   const baseSpeed = (frameCount / 500) * <number>speed.value();
   for (var i = 0; i < numberOfShapes; i++) {
-    const npoints = 3 + i;
-    const radius = 20 * i;
-    const angle = TWO_PI / npoints;
-    const spin = baseSpeed * (numberOfShapes - i);
 
     strokeWeight(3 + i).stroke(colorsArr[i]);
 
     push();
+    const spin = baseSpeed * (numberOfShapes - i);
+    const numberOfSides = 3 + i;
+    const width = 40 * i;
     rotate(spin);
-    // DRAW
-    beginShape();
-    for (let a = 0; a < TWO_PI; a += angle) {
-      let sx = cos(a) * radius;
-      let sy = sin(a) * radius;
-      vertex(sx, sy);
-    }
-    endShape(CLOSE);
-    // END:DRAW
+    drawPolygon(numberOfSides, width);
     pop();
   }
 }
@@ -53,4 +44,16 @@ function draw() {
 // p5 WILL AUTO RUN THIS FUNCTION IF THE BROWSER WINDOW SIZE CHANGES
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+}
+
+function drawPolygon(numberOfSides: number, width: number) {
+  const angle = TWO_PI / numberOfSides;
+  const radius = width / 2;
+  beginShape();
+  for (let a = 0; a < TWO_PI; a += angle) {
+    let sx = cos(a) * radius;
+    let sy = sin(a) * radius;
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
 }
