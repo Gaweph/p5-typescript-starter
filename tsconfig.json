@@ -9,6 +9,7 @@
     "rootDir": "./sketch/",
     "sourceMap": true,
     "sourceRoot": "./sketch/",
-    "target": "es5"
+    "target": "es5",
+    "moduleResolution": "node"
   }
 }
