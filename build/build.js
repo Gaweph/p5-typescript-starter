@@ -43,9 +43,34 @@ var ColorHelper = (function () {
     };
     return ColorHelper;
 }());
+var Polygon = (function () {
+    function Polygon(numberOfSides, width, color, lineWidth) {
+        this.numberOfSides = numberOfSides;
+        this.width = width;
+        this.color = color;
+        this.lineWidth = lineWidth;
+    }
+    Polygon.prototype.draw = function () {
+        push();
+        strokeWeight(this.lineWidth);
+        var angle = TWO_PI / this.numberOfSides;
+        var radius = this.width / 2;
+        stroke(this.color);
+        beginShape();
+        for (var a = 0; a < TWO_PI; a += angle) {
+            var sx = cos(a) * radius;
+            var sy = sin(a) * radius;
+            vertex(sx, sy);
+        }
+        endShape(CLOSE);
+        pop();
+    };
+    return Polygon;
+}());
 var numberOfShapes = 15;
 var speedControl;
 var coloursArr;
+var Shapes;
 function setup() {
     console.log("🚀 - Setup initialized - P5 is running");
     createCanvas(windowWidth, windowHeight);
@@ -54,6 +79,14 @@ function setup() {
     speedControl.position(10, 10);
     speedControl.style("width", "100px");
     coloursArr = ColorHelper.getColorsArray(numberOfShapes);
+    Shapes = [];
+    for (var i = numberOfShapes - 1; i > 0; i--) {
+        var numberOfSides = 3 + i;
+        var width_1 = 40 * i;
+        var lineWidth = 8;
+        var colour = coloursArr[i];
+        Shapes.push(new Polygon(numberOfSides, width_1, colour, lineWidth));
+    }
 }
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
@@ -61,32 +94,13 @@ function windowResized() {
 function draw() {
     background(0);
     var center = createVector(width / 2, height / 2);
-    var baseSpeed = (frameCount / 500) * speedControl.value();
-    drawShapes(center.x, center.y, baseSpeed);
-}
-function drawShapes(x, y, baseSpeed) {
-    translate(x, y);
-    strokeWeight(8);
-    for (var i = numberOfShapes - 1; i > 0; i--) {
-        push();
-        var speed = baseSpeed * (numberOfShapes - i);
-        var numberOfSides = 3 + i;
-        var width_1 = 40 * i;
-        drawPolygon(numberOfSides, width_1, coloursArr[i], speed);
-        pop();
+    var speed = (frameCount / 500) * speedControl.value();
+    push();
+    translate(center);
+    for (var i = 0; i < Shapes.length; i++) {
+        rotate(speed);
+        Shapes[i].draw();
     }
-}
-function drawPolygon(numberOfSides, width, color, speed) {
-    var angle = TWO_PI / numberOfSides;
-    var radius = width / 2;
-    stroke(color);
-    rotate(speed);
-    beginShape();
-    for (var a = 0; a < TWO_PI; a += angle) {
-        var sx = cos(a) * radius;
-        var sy = sin(a) * radius;
-        vertex(sx, sy);
-    }
-    endShape(CLOSE);
+    pop();
 }
 //# sourceMappingURL=../sketch/sketch/build.js.map

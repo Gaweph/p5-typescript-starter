@@ -2,7 +2,7 @@
 let numberOfShapes = 15;
 let speedControl: p5.Element;
 let coloursArr: p5.Color[];
-
+let Shapes: Polygon[];
 // P5 WILL AUTOMATICALLY USE GLOBAL MODE IF A DRAW() FUNCTION IS DEFINED
 function setup() {
   console.log("🚀 - Setup initialized - P5 is running");
@@ -20,6 +20,16 @@ function setup() {
 
   // COLOURS
   coloursArr = ColorHelper.getColorsArray(numberOfShapes); 
+
+  //Create Shapes Array
+  Shapes = [];
+  for (var i = numberOfShapes - 1; i > 0; i--) {
+    const numberOfSides = 3 + i;
+    const width = 40 * i;
+    const lineWidth = 8;
+    const colour =  coloursArr[i];
+    Shapes.push(new Polygon(numberOfSides, width, colour, lineWidth))
+  }
 }
 
 // p5 WILL AUTO RUN THIS FUNCTION IF THE BROWSER WINDOW SIZE CHANGES
@@ -36,35 +46,14 @@ function draw() {
   const center = createVector(width / 2,height / 2);
 
   // CONSISTENT SPEED REGARDLESS OF FRAMERATE
-  const baseSpeed = (frameCount / 500) * <number>speedControl.value(); 
+  const speed = (frameCount / 500) * <number>speedControl.value(); 
 
   // DRAW ALL SHAPES
-  drawShapes(center.x, center.y, baseSpeed);
-}
-
-function drawShapes(x: number, y: number, baseSpeed: number) {
-  translate(x, y);
-  strokeWeight(8); 
-  for (var i = numberOfShapes - 1; i > 0; i--) {
-    push();
-    const speed = baseSpeed * (numberOfShapes - i);
-    const numberOfSides = 3 + i;
-    const width = 40 * i;
-    drawPolygon(numberOfSides, width, coloursArr[i], speed);
-    pop();
-  }
-}
-
-function drawPolygon(numberOfSides: number, width: number, color: p5.Color, speed: number) {
-  const angle = TWO_PI / numberOfSides;
-  const radius = width / 2;
-  stroke(color)
-  rotate(speed);
-  beginShape();
-  for (let a = 0; a < TWO_PI; a += angle) {
-    let sx = cos(a) * radius;
-    let sy = sin(a) * radius;
-    vertex(sx, sy);
-  }
-  endShape(CLOSE);
+  push();
+    translate(center);
+    for (var i = 0; i < Shapes.length; i++) {
+      rotate(speed);
+      Shapes[i].draw();
+    }
+  pop();
 }
