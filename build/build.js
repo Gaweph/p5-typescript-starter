@@ -44,37 +44,43 @@ var ColorHelper = (function () {
     return ColorHelper;
 }());
 var numberOfShapes = 15;
-var speed;
+var speedControl;
+var coloursArr;
 function setup() {
     console.log("🚀 - Setup initialized - P5 is running");
     createCanvas(windowWidth, windowHeight);
     rectMode(CENTER).noFill().frameRate(30);
-    speed = createSlider(0, 15, 3, 1);
-    speed.position(10, 10);
-    speed.style("width", "80px");
-}
-function draw() {
-    background(0);
-    translate(width / 2, height / 2);
-    var colorsArr = ColorHelper.getColorsArray(numberOfShapes);
-    var baseSpeed = (frameCount / 500) * speed.value();
-    for (var i = 0; i < numberOfShapes; i++) {
-        strokeWeight(3 + i).stroke(colorsArr[i]);
-        push();
-        var spin = baseSpeed * (numberOfShapes - i);
-        var numberOfSides = 3 + i;
-        var width_1 = 40 * i;
-        rotate(spin);
-        drawPolygon(numberOfSides, width_1);
-        pop();
-    }
+    speedControl = createSlider(0, 15, 3, 1);
+    speedControl.position(10, 10);
+    speedControl.style("width", "100px");
+    coloursArr = ColorHelper.getColorsArray(numberOfShapes);
 }
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
-function drawPolygon(numberOfSides, width) {
+function draw() {
+    background(0);
+    var center = createVector(width / 2, height / 2);
+    var baseSpeed = (frameCount / 500) * speedControl.value();
+    drawShapes(center.x, center.y, baseSpeed);
+}
+function drawShapes(x, y, baseSpeed) {
+    translate(x, y);
+    strokeWeight(8);
+    for (var i = numberOfShapes - 1; i > 0; i--) {
+        push();
+        var speed = baseSpeed * (numberOfShapes - i);
+        var numberOfSides = 3 + i;
+        var width_1 = 40 * i;
+        drawPolygon(numberOfSides, width_1, coloursArr[i], speed);
+        pop();
+    }
+}
+function drawPolygon(numberOfSides, width, color, speed) {
     var angle = TWO_PI / numberOfSides;
     var radius = width / 2;
+    stroke(color);
+    rotate(speed);
     beginShape();
     for (var a = 0; a < TWO_PI; a += angle) {
         var sx = cos(a) * radius;
