@@ -69,15 +69,20 @@ var Polygon = (function () {
 }());
 var numberOfShapes = 15;
 var speedControl;
+var numberOfShapesControl;
 var coloursArr;
 var Shapes;
 function setup() {
     console.log("🚀 - Setup initialized - P5 is running");
     createCanvas(windowWidth, windowHeight);
     rectMode(CENTER).noFill().frameRate(30);
-    speedControl = createSlider(0, 15, 3, 1);
-    speedControl.position(10, 10);
-    speedControl.style("width", "100px");
+    numberOfShapesControl = createSlider(1, 30, 15, 1).position(10, 10).style("width", "100px");
+    speedControl = createSlider(0, 15, 3, 1).position(10, 40).style("width", "100px");
+    numberOfShapesControl.elt.addEventListener("change", setupShapesArray);
+    setupShapesArray();
+}
+function setupShapesArray() {
+    var numberOfShapes = numberOfShapesControl.value();
     coloursArr = ColorHelper.getColorsArray(numberOfShapes);
     Shapes = [];
     for (var i = numberOfShapes - 1; i > 0; i--) {
@@ -94,7 +99,7 @@ function windowResized() {
 function draw() {
     background(0);
     var center = createVector(width / 2, height / 2);
-    var speed = (frameCount / 500) * speedControl.value();
+    var speed = (frameCount / (numberOfShapesControl.value() * 30)) * 3;
     push();
     translate(center);
     for (var i = 0; i < Shapes.length; i++) {
