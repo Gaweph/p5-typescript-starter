@@ -43,19 +43,13 @@ var ColorHelper = (function () {
     };
     return ColorHelper;
 }());
-var Polygon = (function () {
-    function Polygon(numberOfSides, width, color, lineWidth) {
-        this.numberOfSides = numberOfSides;
-        this.width = width;
-        this.color = color;
-        this.lineWidth = lineWidth;
+var PolygonHelper = (function () {
+    function PolygonHelper() {
     }
-    Polygon.prototype.draw = function () {
+    PolygonHelper.draw = function (numberOfSides, width) {
         push();
-        strokeWeight(this.lineWidth);
-        var angle = TWO_PI / this.numberOfSides;
-        var radius = this.width / 2;
-        stroke(this.color);
+        var angle = TWO_PI / numberOfSides;
+        var radius = width / 2;
         beginShape();
         for (var a = 0; a < TWO_PI; a += angle) {
             var sx = cos(a) * radius;
@@ -65,51 +59,35 @@ var Polygon = (function () {
         endShape(CLOSE);
         pop();
     };
-    return Polygon;
+    return PolygonHelper;
 }());
 var numberOfShapesControl;
-var Shapes;
 function setup() {
     console.log("🚀 - Setup initialized - P5 is running");
     createCanvas(windowWidth, windowHeight);
     rectMode(CENTER).noFill().frameRate(30);
-    numberOfShapesControl =
-        createSlider(1, 30, 15, 1)
-            .position(10, 10)
-            .style("width", "100px")
-            .mouseMoved(setupShapes)
-            .touchMoved(setupShapes);
-    numberOfShapesControl.elt.addEventListener("change", setupShapes);
-    setupShapes();
+    numberOfShapesControl = createSlider(1, 30, 15, 1).position(10, 10).style("width", "100px");
 }
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 function draw() {
     background(0);
-    var speed = (frameCount / (Shapes.length * 30)) * 3;
     translate(width / 2, height / 2);
-    push();
-    for (var i = 0; i < Shapes.length; i++) {
-        rotate(speed);
-        Shapes[i].draw();
-    }
-    pop();
-}
-function getColours() {
-    var numberOfPolygons = numberOfShapesControl.value();
-    return ColorHelper.getColorsArray(numberOfPolygons);
-}
-function setupShapes() {
-    var numberOfPolygons = numberOfShapesControl.value();
-    var colours = getColours();
-    Shapes = [];
-    for (var i = numberOfPolygons - 1; i > 0; i--) {
+    var numberOfShapes = numberOfShapesControl.value();
+    var colours = ColorHelper.getColorsArray(numberOfShapes);
+    var speed = (frameCount / (numberOfShapes * 30)) * 2;
+    for (var i = 0; i < numberOfShapes; i++) {
+        push();
+        var lineWidth = 8;
+        var spin = speed * (numberOfShapes - i);
         var numberOfSides = 3 + i;
         var width_1 = 40 * i;
-        var lineWidth = 8;
-        var colour = colours[i];
-        Shapes.push(new Polygon(numberOfSides, width_1, colour, lineWidth));
+        strokeWeight(lineWidth);
+        stroke(colours[i]);
+        rotate(spin);
+        PolygonHelper.draw(numberOfSides, width_1);
+        pop();
     }
 }
 //# sourceMappingURL=../sketch/sketch/build.js.map
