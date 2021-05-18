@@ -67,45 +67,49 @@ var Polygon = (function () {
     };
     return Polygon;
 }());
-var numberOfShapes = 15;
-var speedControl;
 var numberOfShapesControl;
-var coloursArr;
 var Shapes;
 function setup() {
     console.log("🚀 - Setup initialized - P5 is running");
     createCanvas(windowWidth, windowHeight);
     rectMode(CENTER).noFill().frameRate(30);
-    numberOfShapesControl = createSlider(1, 30, 15, 1).position(10, 10).style("width", "100px");
-    speedControl = createSlider(0, 15, 3, 1).position(10, 40).style("width", "100px");
-    numberOfShapesControl.elt.addEventListener("change", setupShapesArray);
-    setupShapesArray();
-}
-function setupShapesArray() {
-    var numberOfShapes = numberOfShapesControl.value();
-    coloursArr = ColorHelper.getColorsArray(numberOfShapes);
-    Shapes = [];
-    for (var i = numberOfShapes - 1; i > 0; i--) {
-        var numberOfSides = 3 + i;
-        var width_1 = 40 * i;
-        var lineWidth = 8;
-        var colour = coloursArr[i];
-        Shapes.push(new Polygon(numberOfSides, width_1, colour, lineWidth));
-    }
+    numberOfShapesControl =
+        createSlider(1, 30, 15, 1)
+            .position(10, 10)
+            .style("width", "100px")
+            .mouseMoved(setupShapes)
+            .touchMoved(setupShapes);
+    numberOfShapesControl.elt.addEventListener("change", setupShapes);
+    setupShapes();
 }
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 function draw() {
     background(0);
-    var center = createVector(width / 2, height / 2);
-    var speed = (frameCount / (numberOfShapesControl.value() * 30)) * 3;
+    var speed = (frameCount / (Shapes.length * 30)) * 3;
+    translate(width / 2, height / 2);
     push();
-    translate(center);
     for (var i = 0; i < Shapes.length; i++) {
         rotate(speed);
         Shapes[i].draw();
     }
     pop();
+}
+function getColours() {
+    var numberOfPolygons = numberOfShapesControl.value();
+    return ColorHelper.getColorsArray(numberOfPolygons);
+}
+function setupShapes() {
+    var numberOfPolygons = numberOfShapesControl.value();
+    var colours = getColours();
+    Shapes = [];
+    for (var i = numberOfPolygons - 1; i > 0; i--) {
+        var numberOfSides = 3 + i;
+        var width_1 = 40 * i;
+        var lineWidth = 8;
+        var colour = colours[i];
+        Shapes.push(new Polygon(numberOfSides, width_1, colour, lineWidth));
+    }
 }
 //# sourceMappingURL=../sketch/sketch/build.js.map
