@@ -1,20 +1,20 @@
-<!-- TOC -->
 
-- [P5 TypeScript Starter](#p5-typescript-starter)
-    - [Demo](#demo)
-    - [Getting Started](#getting-started)
-        - [Installing](#installing)
-        - [Using](#using)
-    - [Advanced](#advanced)
-        - [Global and Instanced Modes](#global-and-instanced-modes)
-            - [Global Mode](#global-mode)
-            - [Instanced Mode](#instanced-mode)
-        - [Using External Libraries](#using-external-libraries)
-    - [Copyright and License](#copyright-and-license)
+# P5 TypeScript Starter
+
+<!-- TOC -->
+- [Demo](#demo)
+- [Getting Started](#getting-started)
+    - [Installing](#installing)
+    - [Using](#using)
+- [Advanced](#advanced)
+    - [Global and Instanced Modes](#global-and-instanced-modes)
+        - [Global Mode](#global-mode)
+        - [Instanced Mode](#instanced-mode)
+    - [Using External Libraries](#using-external-libraries)
+- [Copyright and License](#copyright-and-license)
 
 <!-- /TOC -->
 
-# P5 TypeScript Starter
 
 This project will quickly get you something working in [p5.js](https://p5js.org/) and [typescript](https://www.typescriptlang.org/).
 
@@ -103,7 +103,7 @@ This starter project will work with either mode, feel free to experiment with bo
 
 To use an external library, e.g. [qrcode-generator](https://www.npmjs.com/package/qrcode-generator).
 
-1. Install the library with `npm install -save qrcode-generator`.
+1. Install the library with `npm install --save-dev qrcode-generator`.
 
 2. Add a `script` tag to your [index.html](index.html).
 
