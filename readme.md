@@ -1,16 +1,30 @@
-# Starter Project
+<!-- TOC -->
 
-## p5.js with Typescript
+- [P5 TypeScript Starter](#p5-typescript-starter)
+    - [Demo](#demo)
+    - [Getting Started](#getting-started)
+        - [Installing](#installing)
+        - [Using](#using)
+    - [Advanced](#advanced)
+        - [Global and Instanced Modes](#global-and-instanced-modes)
+            - [Global Mode](#global-mode)
+            - [Instanced Mode](#instanced-mode)
+        - [Using External Libraries](#using-external-libraries)
+    - [Copyright and License](#copyright-and-license)
 
-Project to quickly get something working in [p5.js](https://p5js.org/) and [typescript](https://www.typescriptlang.org/)
+<!-- /TOC -->
+
+# P5 TypeScript Starter
+
+This project will quickly get you something working in [p5.js](https://p5js.org/) and [typescript](https://www.typescriptlang.org/).
 
 ## Demo
 
-## **[Click here for Demo](https://gaweph.github.io/p5-typescript-starter/)**
+**[Click here for Demo](https://gaweph.github.io/p5-typescript-starter/)**
 
 ![Demo](p5-typescript-demo.png?raw=true "Demo")
 
-This is based on the [Regular Polygon](https://p5js.org/examples/form-regular-polygon.html) sketch available in the p5js examples
+This demo is based on the [Regular Polygon](https://p5js.org/examples/form-regular-polygon.html) sketch available in the p5js examples.
 
 ## Getting Started
 
@@ -24,20 +38,21 @@ git clone https://github.com/Gaweph/p5-typescript-starter.git
 npm install
 ```
 
-### Usage
+### Using
 
 ```
 npm start
 ```
 
-A local version will now be running on [localhost:3000](http://localhost:3000)
+A local version will now be running on [localhost:3000](http://localhost:3000).
 
-## Global and Instanced mode
+## Advanced
 
-P5 is able to run in either global or instanced mode.
-https://github.com/processing/p5.js/wiki/Global-and-instance-mode
+### Global and Instanced Modes
 
-This starter project now uses **Global mode** to bring it inline with most of the online resources provided by the project.
+P5 is able to run in either [global or instance mode](https://github.com/processing/p5.js/wiki/Global-and-instance-mode).
+
+This starter project uses **global mode** by default to bring it in line with most of the online resources provided by the project. 
 
 As stated on the P5 wiki:
 
@@ -45,7 +60,7 @@ As stated on the P5 wiki:
 
 The following examples are both functionally the same.
 
-### Global Mode
+#### Global Mode
 
 ```typescript
 let x = 100;
@@ -62,7 +77,7 @@ function draw() {
 }
 ```
 
-### Instanced Mode
+#### Instanced Mode
 
 ```typescript
 var sketch = (p: p5) => {
@@ -83,3 +98,37 @@ new p5(sketch);
 ```
 
 This starter project will work with either mode, feel free to experiment with both.
+
+### Using External Libraries
+
+To use an external library, e.g. [qrcode-generator](https://www.npmjs.com/package/qrcode-generator).
+
+1. Install the library with `npm install -save qrcode-generator`.
+
+2. Add a `script` tag to your [index.html](index.html).
+
+   ```html
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+   ```
+
+3. Import via [global.d.ts](global.d.ts).
+
+   ```typescript
+   import qrcode = require('qrcode-generator');
+   ```
+
+4. Use in [sketch/sketch.ts](sketch/sketch.ts).
+
+   ```typescript
+   var qr = qrcode(4, 'L');
+   qr.addData('https://github.com/Gaweph/p5-typescript-starter');
+   qr.make();
+
+   text(qr.createASCII(), 1, 1);
+   ```
+
+See [dblock/p5qr](https://github.com/dblock/p5qr) for a working sample.
+
+## Copyright and License
+
+MIT License, see [LICENSE](LICENSE) for details.
