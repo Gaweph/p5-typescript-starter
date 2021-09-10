@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "mapRoot": "./sketch/",
     "module": "none",
     "noImplicitAny": true,
     "outFile": "./build/build.js",
@@ -8,7 +7,6 @@
     "removeComments": true,
     "rootDir": "./sketch/",
     "sourceMap": true,
-    "sourceRoot": "./sketch/",
     "target": "es5",
     "moduleResolution": "node"
   }
