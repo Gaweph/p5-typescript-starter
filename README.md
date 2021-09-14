@@ -1,15 +1,6 @@
 
 # P5 TypeScript Starter
 
-<!-- TOC -->
-- [Demo](#demo)
-- [Getting Started](#getting-started)
-- [Advanced](#advanced)
-- [Copyright and License](#copyright-and-license)
-
-<!-- /TOC -->
-
-
 This project will quickly get you something working in [p5.js](https://p5js.org/) and [typescript](https://www.typescriptlang.org/).
 
 ## Demo
