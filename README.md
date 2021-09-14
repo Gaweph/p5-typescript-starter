@@ -4,13 +4,7 @@
 <!-- TOC -->
 - [Demo](#demo)
 - [Getting Started](#getting-started)
-    - [Installing](#installing)
-    - [Using](#using)
 - [Advanced](#advanced)
-    - [Global and Instanced Modes](#global-and-instanced-modes)
-        - [Global Mode](#global-mode)
-        - [Instanced Mode](#instanced-mode)
-    - [Using External Libraries](#using-external-libraries)
 - [Copyright and License](#copyright-and-license)
 
 <!-- /TOC -->
