@@ -7,7 +7,7 @@ This project will quickly get you something working in [p5.js](https://p5js.org/
 
 **[Click here for Demo](https://gaweph.github.io/p5-typescript-starter/)**
 
-![Demo](p5-typescript-demo.png?raw=true "Demo")
+![Demo](https://gaweph.github.io/p5-typescript-starter/p5-typescript-demo.png?raw=true "Demo")
 
 This demo is based on the [Regular Polygon](https://p5js.org/examples/form-regular-polygon.html) sketch available in the p5js examples.
 
