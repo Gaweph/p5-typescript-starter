@@ -90,19 +90,19 @@ To use an external library, e.g. [qrcode-generator](https://www.npmjs.com/packag
 
 1. Install the library with `npm install --save-dev qrcode-generator`.
 
-2. Add a `script` tag to your [index.html](index.html).
+2. Add a `script` tag to your `index.html`.
 
    ```html
    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
    ```
 
-3. Import via [global.d.ts](global.d.ts).
+3. Import via `global.d.ts`.
 
    ```typescript
    import qrcode = require('qrcode-generator');
    ```
 
-4. Use in [sketch/sketch.ts](sketch/sketch.ts).
+4. Use in `sketch.ts`.
 
    ```typescript
    var qr = qrcode(4, 'L');
